@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-Test Airplane Mode workaround.
+Test Airplane Mode workaround from System76
 """
 
 import time
