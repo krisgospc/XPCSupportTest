@@ -1,0 +1,5 @@
+This folder is where S76 is putting their X.org configs for their
+models with Nvidia cards.
+The file I have changed to xpcsupport is the base file for
+Nvidia based computers.
+
