@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# XPCSupport: Support tool for XPC Computers
+# Copyright (C) 2017 Xotic PC
+#
+# This file is part of `xpcsupport`.
+#
+# `xpcsupport` is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# `xpcsupport` is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# REASONING FOR THIS CODE
+# Starting with 16.04, there are WiFi reliability issues when resuming from
+# suspend, at least with certain WiFi cards.  In particular, this problem seems
+# to effect Haswell generation cards like the 7260.  It does not seem to effect
+# Skylake generation cards like the 3165, 8260.
+#
+# This seems fundamentally a user-space issue, not a kernel issue.
+#
+# This script is installed at /lib/systemd/system-sleep/xpcsupport-nm-restart.
+
+set -e
+
+if [ "$2" = "suspend" ] || [ "$2" = "hybrid-sleep" ]; then
+    case "$1" in
+        pre) true ;;
+        post) sleep 1 && service network-manager restart ;;
+    esac
+fi
+

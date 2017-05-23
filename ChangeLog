@@ -1,0 +1,10 @@
+XPC Support
+
+Xotic PC
+Copyright Xotic PC, Inc.
+Released under the GNU General Public License version 2 (See LICENSE)
+
+Version 0.1
+
+Import GPL codebase from system76-driver
+Change all references to xpcsupport

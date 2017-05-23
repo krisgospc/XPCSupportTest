@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=2.7.3
+Encoding=UTF-8
+Name=XPC Support
+GenericName=XPC Support
+Comment=Drivers and support for XPC laptops
+Exec=xpcsupport-driver-pkexec
+Terminal=false
+Type=Application
+Icon=xpcsupport
+Categories=GNOME;GTK;Settings;X-GNOME-SystemSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;
+GenericName[en_US]=XPC Support
+X-Unity-Settings-Panel=xpcsupport
+X-GNOME-Settings-Panel=xpcsupport

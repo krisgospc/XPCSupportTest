@@ -1,0 +1,68 @@
+#!/usr/bin/python3
+
+# XPCSupport: Support tool for XPC Computers
+# Copyright (C) 2017 Xotic PC
+#
+# This file is part of `xpcsupport`.
+#
+# `xpcsupport` is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# `xpcsupport` is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+import argparse
+import os
+import sys
+import time
+import logging
+import platform
+
+import xpcsupport
+from xpcsupport.model import determine_model_new
+from xpcsupport.products import PRODUCTS
+from xpcsupport.gtk import UI
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--home', help='specify home directory')
+parser.add_argument('--model', help='force model rather than detecting it')
+parser.add_argument('--dry', action='store_true', default=False,
+    help='print what would be done but without calling Action.perform()',
+)
+args = parser.parse_args()
+
+if os.getuid() != 0:
+    sys.exit('Error: must be run as root')
+
+logging.basicConfig(
+    filename='/var/log/xpcsupport-driver.log',
+    level=logging.DEBUG,
+    style='{',
+    format='{asctime}  {levelname}  {message}',
+)
+log = logging.getLogger()
+
+if args.home is None:
+    args.home = os.environ['HOME']
+if args.model is None:
+    args.model = determine_model_new()
+product = PRODUCTS.get(args.model)
+
+log.info('** Process start at monotonic time %r', time.monotonic())
+log.info('xpcsupport.__version__: %r', xpcsupport.__version__)
+log.info('OS: %r', platform.dist())
+log.info('kernel: %r', platform.uname().release)
+log.info('model: %r', args.model)
+
+ui = UI(args.model, product, args)
+ui.run()
+

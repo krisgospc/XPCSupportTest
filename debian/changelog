@@ -1,0 +1,743 @@
+system76-driver (17.04.5) zesty; urgency=low
+
+  * Remove compiz workarounds after releasing NVIDIA 375.66 driver
+  * Enable OpenGL flipping for GTX 1060
+  * Change gsettings override priority to 40
+
+ -- David Jordan <david2@system76.com>  Tue, 16 May 2017 16:25:28 -0600
+
+system76-driver (17.04.4) zesty; urgency=low
+
+  * Update HiDPI action for galp2.
+
+ -- David Jordan <david2@system76.com>  Wed, 10 May 2017 16:35:01 -0600
+
+system76-driver (17.04.3) zesty; urgency=low
+
+  * Add HiDPI/LoDPI autoscaling daemon for multi-monitor setups.
+
+ -- David Jordan <david2@system76.com>  Thu, 04 May 2017 15:07:28 -0600
+
+system76-driver (17.04.2) zesty; urgency=low
+
+  * Add 'galp2'
+
+ -- Jeremy Soller <jeremy@system76.com>  Mon, 24 Apr 2017 11:38:21 -0600
+
+system76-driver (17.04.1) zesty; urgency=low
+
+  * Fix grapical corruption issue with compiz and NVIDIA 375.39 driver
+
+ -- David Jordan <david2@system76.com>  Thu, 13 Apr 2017 16:47:41 -0600
+
+system76-driver (17.04.0) zesty; urgency=low
+
+  * Update to zesty series
+
+ -- Jeremy Soller <jeremy@system76.com>  Thu, 06 Apr 2017 12:07:01 -0600
+
+system76-driver (16.10.19) yakkety; urgency=low
+
+  * Add 'kudu4' and 'gaze12'
+
+ -- David Jordan <david2@system76.com>  Wed, 29 Mar 2017 14:20:15 -0600
+
+system76-driver (16.10.18) yakkety; urgency=low
+
+  * Use who instead of w to support longer usernames in ESS DAC autoswitch
+
+ -- Jeremy Soller <jeremy@system76.com>  Thu, 23 Mar 2017 14:23:25 -0600
+
+system76-driver (16.10.17) yakkety; urgency=low
+
+  * Apply ESS DAC pinctl on resume
+  * Fix ESS DAC autoswitch with long usernames
+
+ -- Jeremy Soller <jeremy@system76.com>  Thu, 23 Mar 2017 13:36:12 -0600
+
+system76-driver (16.10.16) yakkety; urgency=low
+
+  * Add meer3 product
+  * Fix meer3 headset jack
+
+ -- Jeremy Soller <jeremy@system76.com>  Mon, 13 Mar 2017 13:43:28 -0600
+
+system76-driver (16.10.15) yakkety; urgency=low
+
+  * Add bonw12 and wilp13
+
+ -- David Jordan <david2@system76.com>  Mon, 20 Feb 2017 10:31:51 -0700
+
+system76-driver (16.10.14) yakkety; urgency=low
+
+  * ESS DAC autoswitch: Fix input profile
+
+ -- David Jordan <david2@system76.com>  Wed, 08 Feb 2017 12:20:50 -0700
+
+system76-driver (16.10.13) yakkety; urgency=low
+
+  * Update ESS DAC autoswitching to use hardcoded PCI address
+
+ -- Jeremy Soller <jeremy@system76.com>  Mon, 06 Feb 2017 11:18:01 -0700
+
+system76-driver (16.10.12) yakkety; urgency=low
+
+  * NoFlip fix for Serw10 with GTX 1060
+  * Add support for ESS DAC autoswitching
+
+ -- Jeremy Soller <jeremy@system76.com>  Fri, 03 Feb 2017 14:16:50 -0700
+
+system76-driver (16.10.11) yakkety; urgency=low
+
+  * debian/system76-driver-nvidia.postinst: run quirks-handler on post install
+
+ -- David Jordan <david2@system76.com>  Tue, 31 Jan 2017 12:45:43 -0700
+
+system76-driver (16.10.10) yakkety; urgency=low
+
+  * Add nvidia quirks for oryp3 and oryp3-ess
+  * system76-nvidia-quirks: match sys_vendor 'System76, Inc.|System76'
+  * Change bonw11 and serw10 nvidia quirks to also match sys_vendor 'System76'
+
+ -- David Jordan <david2@system76.com>  Thu, 26 Jan 2017 17:40:50 -0700
+
+system76-driver (16.10.9) yakkety; urgency=low
+
+  * Add oryp3 and oryp3-ess
+  * system76driver/__init__.py: Add new sys_vendor to list
+
+ -- David Jordan <david2@system76.com>  Tue, 24 Jan 2017 16:24:25 -0700
+
+system76-driver (16.10.8) yakkety; urgency=low
+
+  * debian/control: system76-driver-nvidia now depends on nvidia-367 (in prep
+    for GTX 1080, GTX 1070)
+  * system76-nvidia-quirks: update Handler to "nvidia-367|nvidia-340"
+  * Change model specific nvidia quirks handler to nvidia-375 from nvidia-367
+
+ -- David Jordan <david2@system76.com>  Tue, 03 Jan 2017 16:20:13 -0700
+
+system76-driver (16.10.7) yakkety; urgency=low
+
+  * Correct xrandr output handling for hidpi action.
+
+ -- David Jordan <david2@system76.com>  Mon, 12 Dec 2016 11:46:17 -0700
+
+system76-driver (16.10.6) yakkety; urgency=low
+
+  * Set console font for HiDPI displays
+
+ -- David Jordan <david2@system76.com>  Tue, 22 Nov 2016 11:02:49 -0700
+
+system76-driver (16.10.5) yakkety; urgency=low
+
+  * Fix HiDPI action failure when HiDPI display not present.
+
+ -- David Jordan <david2@system76.com>  Tue, 22 Nov 2016 02:27:44 -0700
+
+system76-driver (16.10.4) yakkety; urgency=low
+
+  * Add gsettings override for internal HiDPI displays.
+
+ -- David Jordan <david2@system76.com>  Tue, 22 Nov 2016 00:22:20 -0700
+
+system76-driver (16.10.3) yakkety; urgency=low
+
+  * Add daemon fix for gpe6F acpi interrupt flood for 'oryp2' and 'oryp2-ess'
+
+ -- David Jordan <david2@system76.com>  Tue, 11 Oct 2016 15:18:12 -0600
+
+system76-driver (16.10.2) yakkety; urgency=low
+
+  * Add 'lemu7' to PRODUCTS
+  * Add 'actions.internal_mic_gain' to 'lemu7'
+  * Add 'lemu7' to NEEDS_AIRPLANE
+
+ -- Jason Gerard DeRose <jason@system76.com>  Sat, 01 Oct 2016 17:33:15 -0600
+
+system76-driver (16.10.1) yakkety; urgency=low
+
+  * Add 'actions.backlight_vendor' to 'gaze11' and 'kudu3'
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 22 Sep 2016 21:43:11 -0600
+
+system76-driver (16.10.0) yakkety; urgency=low
+
+  * Start 16.10.x series, initial Yakkety release
+  * It's going to be "oryp2-ess" after all, not "oryp2-dac"; update all the
+    things as needed
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 22 Sep 2016 14:58:02 -0600
+
+system76-driver (16.04.13) xenial; urgency=low
+
+  * Add 'actions.i8042_reset_nomux' for 'oryp2' and 'oryp2-dac'
+
+ -- David Jordan <david2@system76.com>  Wed, 21 Sep 2016 17:29:55 -0600
+
+system76-driver (16.04.12) xenial; urgency=low
+
+  * Add gfxpayload_text action to 'bonw11'
+
+ -- David Jordan <david2@system76.com>  Fri, 16 Sep 2016 13:40:40 -0600
+
+system76-driver (16.04.11) xenial; urgency=low
+
+  * Change 'oryp2-ess' to 'oryp2-dac'
+  * Add 'actions.pulseaudio_hp_spdif_desc' for 'bonw11', 'oryp2-dac', 'serw10'
+
+ -- David Jordan <david2@system76.com>  Thu, 15 Sep 2016 14:59:07 -0600
+
+system76-driver (16.04.10) xenial; urgency=low
+
+  * Add 'kudu3', 'gaze11' to PRODUCTS, NEEDS_AIRPLANE
+  * Add `actions.dac_fixup`, used by 'bonw11', 'oryp2-ess', 'serw10'
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 13 Sep 2016 10:09:37 -0600
+
+system76-driver (16.04.9) xenial; urgency=low
+
+  * Add 'sable6' to PRODUCTS
+  * Add 'bonw11', 'serw10', 'oryp2', and 'oryp2-ess' to PRODUCTS
+  * Add nvidia dithering quirks for new pascal laptops.
+
+ -- David Jordan <david2@system76.com>  Mon, 29 Aug 2016 12:02:30 -0600
+
+system76-driver (16.04.8) xenial; urgency=low
+
+  * Add 'leow7' to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 25 Jul 2016 11:18:20 -0600
+
+system76-driver (16.04.7) xenial; urgency=low
+
+  * Drop `system76-fix-ecryptfs-swap` script as the equivalent has now been
+    delivered in Xenial via USN-3032-1
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 14 Jul 2016 14:09:13 -0600
+
+system76-driver (16.04.6) xenial; urgency=low
+
+  * Revert changes from unpublished 16.04.5
+  * Add `system76-fix-ecryptfs-swap` script to work-around ecryptfs-setup-swap
+    failing to mark GPT swap partitions as non-auto-mounting on NVMe drives
+    (see https://bugs.launchpad.net/ecryptfs/+bug/1597154)
+  * debian/system76-driver.postinst: on configure, automatically call
+    system76-fix-ecryptfs-swap; this is a quick work-around to prevent users
+    with NVME + nvidia-367 + encrypted home directory from being left with an
+    un-bootable system after upgrading to nvidia-367
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 29 Jun 2016 16:42:45 -0600
+
+system76-driver (16.04.5) xenial; urgency=low
+
+  * To temporarily work-around the consequences of lp:1597154, re-enable
+    GRUB_GFXPAYLOAD_LINUX=text line on bonw10, orxp1, serw9
+  * Note: 16.04.5 was never published to ppa:system76-dev/stable, was only
+    published to ppa:system76-dev/pre-stable
+
+ -- David Jordan <david2@system76.com>  Wed, 29 Jun 2016 09:09:15 -0600
+
+system76-driver (16.04.4) xenial; urgency=low
+
+  * Add actions.remove_gfxpayload_text to remove GRUB_GFXPAYLOAD_LINUX=text line
+  * On bonw10, orxp1, serw9, replace gfxpayload_text action with
+    remove_gfxpayload_text
+  * Add /lib/systemd/system-sleep/system76-nm-restart script to restart
+    network-manager 1 second after resuming from suspend; this works around WiFi
+    reliability problems when resuming from suspend with Intel 7260 WiFi cards
+    on Xenial
+  * debian/control: system76-driver-nvidia now depends on nvidia-367 (in prep
+    for GTX 1080, GTX 1070)
+  * system76-nvidia-quirks: update Handler to "nvidia-367|nvidia-340"
+
+ -- David Jordan <david2@system76.com>  Wed, 22 Jun 2016 10:31:39 -0600
+
+system76-driver (16.04.3) xenial; urgency=low
+
+  * Fix warning about not using gi.require_version('Gtk', '3.0') 
+    (thanks, James Gross)
+
+ -- David Jordan <david2@system76.com>  Thu, 26 May 2016 11:47:17 -0600
+
+system76-driver (16.04.2) xenial; urgency=low
+
+  * debian/system76-driver.gsettings-override: switch default wallpaper to
+    "Fractal Mountains"
+  * debian/control: system76-driver now Depends on system76-wallpapers
+    >= 16.04.1~bzr26~ubuntu16.04.1
+  * debian/control: now Build-Depends on pyflakes3 (instead of pyflakes)
+  * Fix typo in system76driver/model.py (thanks, Ian Santopietro)
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 22 Apr 2016 18:04:53 -0600
+
+system76-driver (16.04.1) xenial; urgency=low
+
+  * debian/control: system76-driver-nvidia now depends on nvidia-361
+  * system76-nvidia-quirks: change Handler to "nvidia-361|nvidia-340"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 07 Mar 2016 19:54:36 -0700
+
+system76-driver (16.04.0) xenial; urgency=low
+
+  * Start 16.04.x series, initial Xenial release
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 25 Feb 2016 14:05:05 -0700
+
+system76-driver (15.10.14) wily; urgency=low
+
+  * Add 'meer2', 'sabl5' to PRODUCTS
+  * Accomidate some 'sys_vendor' goofs in our DMI info
+  * Unify how the 'sys_vendor' and 'product_version' DMI values are used by
+    `system76-drive-cli` and `system76-daemon` to determine whether actions
+    should be taken at package-install-time and run-time, respectively
+  * Improve actions.gfxpayload_text (orxp1, serw9, bonw10) to make it more
+    robust, so it plays nicely with user modifications in /etc/default/grub
+  * When a driver action is skipped because it has already been applied, log
+    this event at level INFO instead of WARNING (as the later made it seems like
+    something might have gone wrong, but in fact this is normal behavior)
+  * Update the Copyright to "2005-2016 System76, Inc."
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 24 Feb 2016 04:37:44 -0700
+
+system76-driver (15.10.13) wily; urgency=low
+
+  * Add leow6 to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 18 Jan 2016 17:26:37 -0700
+
+system76-driver (15.10.12) wily; urgency=low
+
+  * Add actions.disable_pm_async to meer1, needed to work-around intermintent
+    failures when resuming from suspend using the power button
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 23 Dec 2015 14:17:50 -0700
+
+system76-driver (15.10.11) wily; urgency=low
+
+  * Add actions.gfxpayload_text to bonw10
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 21 Dec 2015 10:55:53 -0700
+
+system76-driver (15.10.10) wily; urgency=low
+
+  * Add actions.backlight_vendor to gaze10, kudu2
+  * Add "silw2" (Silverback WS) to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 10 Dec 2015 11:20:56 -0700
+
+system76-driver (15.10.9) wily; urgency=low
+
+  * Add actions.internal_mic_gain to gaze10
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 07 Dec 2015 12:05:35 -0700
+
+system76-driver (15.10.8) wily; urgency=low
+
+  * Add more new Skylake products:
+    - bonw10 (Bonobo WS)
+    - gaze10 (Gazelle)
+    - kudu2 (Kudu)
+  * Update Copyright to "2005-2015 System76, Inc."
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 01 Dec 2015 16:55:00 -0700
+
+system76-driver (15.10.7) wily; urgency=low
+
+  * Add actions.internal_mic_gain to lemu6
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 23 Nov 2015 10:57:02 -0700
+
+system76-driver (15.10.6) wily; urgency=low
+
+  * Laptop screen backlight brightness works with nvidia-352.63, so
+    change system76-driver-nvidia to depend on `nvidia-352` instead of
+    `nvidia-346-system76`
+  * Following how USN-2814-1/CVE-2015-7869 was handled in Ubuntu 14.04,
+    force the transition from `nvidia-346-system76` to `nvidia-352` as
+    it's still unclear whether 346 is effected by this security issue
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 19 Nov 2015 15:06:38 -0700
+
+system76-driver (15.10.5) wily; urgency=low
+
+  * Add 'silw1b' to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 16 Nov 2015 09:00:34 -0700
+
+system76-driver (15.10.4) wily; urgency=low
+
+  * Add `actions.gfxpayload_text` to "orxp1"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 05 Nov 2015 11:21:48 -0700
+
+system76-driver (15.10.3) wily; urgency=low
+
+  * Add `actions.gfxpayload_text`, now used by "serw9".
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 26 Oct 2015 15:26:48 -0600
+
+system76-driver (15.10.2) wily; urgency=low
+
+  * Also need to handle transitional 346 packages, so `nvidia-346-system76`
+    must conflict/replace `nvidia-346`, `libcuda1-346`, `nvidia-opencl-icd-346`
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 23 Oct 2015 15:17:52 -0600
+
+system76-driver (15.10.1) wily; urgency=low
+
+  * To facilitate upgrade between 15.04 to 15.10, change system76-driver-nivida
+    to only depend on `nvidia-346-system76`, and also to conflict/replace
+    `nvidia-352`, `libcuda1-352`, `nvidia-opencl-icd-352`
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 23 Oct 2015 14:25:44 -0600
+
+system76-driver (15.10.0) wily; urgency=low
+
+  * Start 15.10.x series, initial Wily release
+  * debian/system76-driver.service: add Restart=on-failure
+  * debian/control: `system76-driver-nvidia` now Depends on
+    (nvidia-346-system76 | nvidia-352 | nvidia-340)
+  * system76-nvidia-quirks: change Handler to
+    "nvidia-346-system76|nvidia-352|nvidia-340"
+  * gsettings-override: "org.gnome.settings-daemon.peripherals.touchpad"
+    renamed to "org.gnome.desktop.peripherals.touchpad" in Wily
+  * Work around SMBIOS 2.8 issue on orxp1
+  * Add new Skylake products:
+    - wilp12 (Wild Dog Pro)
+    - ratp5 (Ratel Pro)
+    - serw9 (Serval WS)
+    - lemu6 (Lemur)
+    - orxp1 (Oryx Pro)
+
+ -- Jason Gerard DeRose <jason@system76.com>  Sat, 17 Oct 2015 12:45:25 -0600
+
+system76-driver (15.04.7) vivid; urgency=low
+
+  * Add 'serw8-17g' to PRODUCTS, NEEDS_BRIGHTNESS_ACPI
+  * Work around Wily build failure by adding new 'setup.py test --skip-gtk'
+    option, not bothering with xvfb during build
+  * Drop unused edid functions from system76driver.model
+  * Small debian/ modernizations and fixes
+  * Drop system76-driver 'Depends: gnome-color-manager' as it isn't actually
+    needed anymore, feels a bit too invasive; however, we'll still pre-install
+    gnome-color-manager in our standard image
+  * Add system76-driver 'Suggests: gnome-color-manager' to make above transition
+    a bit more friendly
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 01 Jul 2015 13:28:42 -0600
+
+system76-driver (15.04.6) vivid; urgency=low
+
+  * Add 'gazp9c', 'kudp1c' to PRODUCTS, NEEDS_AIRPLANE, NEEDS_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 28 May 2015 13:10:13 -0600
+
+system76-driver (15.04.5) vivid; urgency=low
+
+  * Sync patched analog-input-internal-mic.conf with pulseaudio default file in
+    Vivid
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 27 May 2015 12:28:43 -0600
+
+system76-driver (15.04.4) vivid; urgency=low
+
+  * Add 'bonw9' to NEEDS_AIRPLANE
+  * Add 'bown9', 'serw8-15', 'serw8-17' to NEEDS_BRIGHTNESS_ACPI
+  * Add 'silw1' to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 13 May 2015 11:48:01 -0600
+
+system76-driver (15.04.3) vivid; urgency=low
+
+  * Add 'serw8-15', 'serw8-17' to PRODUCTS, NEEDS_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 20 Apr 2015 19:03:08 -0600
+
+system76-driver (15.04.2) vivid; urgency=low
+
+  * Change default wallpaper to Honeycomb
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 10 Apr 2015 14:52:36 -0600
+
+system76-driver (15.04.1) vivid; urgency=low
+
+  * Add 'sabl4', 'bonw9' to PRODUCTS, NEEDS_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 08 Apr 2015 19:22:18 -0600
+
+system76-driver (15.04.0) vivid; urgency=low
+
+  * Start 15.04.x series, initial Vivid release
+  * debian/control: `system76-driver-nvidia` now Depends on
+    (nvidia-346 | nvidia-346-updates | nvidia-340 | nvidia-340-updates)
+  * system76-nvidia-quirks: change Handler to
+    "nvidia-346|nvidia-346-updates|nvidia-340|nvidia-340-updates"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 18 Mar 2015 14:29:54 -0600
+
+system76-driver (14.10.8) utopic; urgency=low
+
+  * system76driver.read_dmi_id() is now failsafe when "sys_vendor" or
+    "product_version" contain invalid UTF-8 data; this would never be the case
+    on an actual System76 product, but the driver should politely do nothing
+    when installed on non-System76 hardware
+  * Add "meer1" (Meerkat) to PRODUCTS
+  * Add "lemu5" (Lemur) to PRODUCTS, NEEDS_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 18 Mar 2015 10:44:44 -0600
+
+system76-driver (14.10.7) utopic; urgency=low
+
+  * debian/control: `system76-driver-nvidia` now Depends on
+    (nvidia-346 | nvidia-331 | nvidia-331-updates)
+  * system76-nvidia-quirks: change Handler to
+    "nvidia-346|nvidia-331|nvidia-331-updates"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 22 Jan 2015 09:29:50 -0700
+
+system76-driver (14.10.6) utopic; urgency=low
+
+  * Re-enable wifi_pm_disable for all haswell gen products, seemingly still
+    needed with some access points, even with the 3.16 kernel
+  * Small cosmetic changes so that the difference between the LTS and trunk
+    driver branches is small and manageable
+  * Add debian/system76-driver.service file for initial systemd support
+    (LP: #1390152)
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 16 Jan 2015 13:13:55 -0700
+
+system76-driver (14.10.5) utopic; urgency=low
+
+  * Also add `internal_mic_gain` action back for daru4, gazp9b, and kudp1b,
+    likewise still needed on Utopic
+  * system76driver/daemon.py: add a number of small optimizations that in total
+    mean that support for the airplane mode hotkey (Haswell gen laptops) incurs
+    around half the events per second and less than a quarter of the CPU usage
+    (as measured by `powertop`)
+  * Drop `wifi_pm_disable` action from all Haswell gen laptops as the latest
+    3.16 kernel plus the latest linux-firmware package seem to have completely
+    fixed the latency, reliability, and performance issues previously
+    encountered when power management was turned on for Intel 3160/7260 cards
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 10 Dec 2014 16:49:57 -0700
+
+system76-driver (14.10.4) utopic; urgency=low
+
+  * Bring back `internal_mic_gain` fix, still needed for galu1 on Utopic.
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 18 Nov 2014 10:23:20 -0700
+
+system76-driver (14.10.3) utopic; urgency=low
+
+  * Update to new System76 branding!
+  * debian/system76-driver.install: don't install "Old Man Smoked His Pipe"
+    wallpaper, nor system76-wallpapers.xml, as these files have moved into the
+    new `system76-wallpapers` package (separate source package/tree)
+  * debian/control: `system76-driver` now depends on "system76-wallpapers"
+  * debian/system76-driver.gsettings-override: switch default background to
+    "Geometric" for new System76 brand launch
+  * debian/system76-driver.gsettings-override: add [com.canonical.Unity.Lenses]
+    section, set 'remote-content-search' to 'none'
+
+ -- Jason Gerard DeRose <jason@system76.com>  Sun, 09 Nov 2014 02:47:29 -0700
+
+system76-driver (14.10.2) utopic; urgency=low
+
+  * Change 'The Leopard Extreme' to 'Leopard Extreme' to be consistent with
+    website
+  * Add 'leox5' to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 03 Nov 2014 10:10:39 -0700
+
+system76-driver (14.10.1) utopic; urgency=low
+
+  * debian/control: `system76-driver-nvidia` now Depends on
+    (nvidia-343 | nvidia-331 | nvidia-331-updates)
+  * system76-nvidia-quirks: change Handler to
+    "nvidia-343|nvidia-331|nvidia-331-updates"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 22 Oct 2014 10:55:18 -0600
+
+system76-driver (14.10.0) utopic; urgency=low
+
+  * Start 14.10.x series, initial Utopic release
+  * Drop `disable_power_well` action as it's no longer needed for Haswell
+    laptop products with the Linux 3.16 kernel (LP: #1356507)
+  * Switch from `acpi_video0` to `intel_backlight` on all Haswell products,
+    use 75% of max_brightness for default brightness (LP: #1375477)
+  * debian/system76-driver.upstart: in order to fix backlight brightness
+    restore, "start on (login-session-start or desktop-session-start)"
+    (LP: #1378974)
+  * Drop `internal_mic_gain` action from daru4, galu1, gazp9b, and kudp1b, as
+    its no longer needed on Utopic
+  * debian/control: `system76-driver-nvidia` now Depends on
+    (nvidia-343 | nvidia-331-updates)
+  * system76-nvidia-quirks: change Handler to "nvidia-343|nvidia-331-updates"
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 21 Oct 2014 11:17:41 -0600
+
+system76-driver (14.04.10) trusty; urgency=low
+
+  * Add "ratp4" and "wilp11" to PRODUCTS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 08 Sep 2014 10:18:35 -0600
+
+system76-driver (14.04.9) trusty; urgency=low
+
+  * Drop remaining caps fix from system76-daemon
+  * Add "sabc3", "sabt3" to PRODUCTS, DEFAULT_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 30 Jul 2014 10:32:07 -0600
+
+system76-driver (14.04.8) trusty; urgency=low
+
+  * Re-enable backlight_vendor action on gazp9 as some early BIOS versions
+    still need this, even on Trusty
+
+ -- Jason Gerard DeRose <jason@system76.com>  Sun, 18 May 2014 11:56:00 -0600
+
+system76-driver (14.04.7) trusty; urgency=low
+
+  * Oops, sys_vendor on daru4 is 'System76, Inc' rather than 'System76, Inc.'
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 09 May 2014 14:53:25 -0600
+
+system76-driver (14.04.6) trusty; urgency=low
+
+  * As screen revisions within a product lifetime make it too difficult to
+    supply a correct color profile out of the box, drop color profile actions
+    from bonx7, galu1, gazp9 (note this wont remove profiles already
+    installed, will only effect new shipments and re-installs)
+  * debian/control: drop Build-Depends/Depends on `python3-dbus`, as it was
+    only needed for color-profile actions
+  * debian/control: add Depends on `pm-utils` as some driver actions expect
+    /etc/pm/power.d/ to exist, which seems not to be installed by default on
+    Xubuntu, Ubuntu GNOME
+  * Rework GrubAction and its subclasses so that it preserves customer changes
+    and can also remove previously added kernel parameters when needed
+  * Rework system76-driver-cli to make it more suitable for automatically
+    being called from a postinst script
+  * Add debian/system76-driver.postinst that automatically calls
+    /usr/bin/system76-driver-cli
+  * system76-daemon no longer needs to fix caps on /bin/ping, /bin/ping6,
+    /usr/bin/arping as the `iputils` package as been updated and reverted to
+    use suid again; however, caps fix on /usr/bin/gnome-keyring-daemon is
+    still needed
+  * Add remove_backlight_vendor action to gazp9, gazp9b to properly remove
+    acpi_backlight=vendor from GRUB_CMDLINE_LINUX_DEFAULT
+  * On daru4, replace `grub_daru4` with `backlight_vendor` plus
+    `disable_power_well` actions now that GrubAction is cumulative
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 09 May 2014 13:22:25 -0600
+
+system76-driver (14.04.5) trusty; urgency=low
+
+  * Add hdmi_hotplug_fix action to daru4, galu1, gazp9, gazp9b, kudp1, kudp1b
+  * Drop backlight_vendor action from gazp9, gazp9b (not needed on Trusty)
+  * Add disable_power_well action to galu1, gazp9, gazp9b, kudp1, kudp1b
+  * Add grub_daru4 action to daru4, which combines the `backlight_vendor` and
+    `disable_power_well` actions
+  * Up Airplane Mode poll interval to 500ms (from 375ms)
+  * system76-daemon will now automatically fix caps on /bin/ping, /bin/ping6,
+    /usr/bin/arping, and /usr/bin/gnome-keyring-daemon to correct for imaging
+    not correctly handling caps for a short time after Trusty was released
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 02 May 2014 17:03:19 -0600
+
+system76-driver (14.04.4) trusty; urgency=low
+
+  * Add "gazp9b" to PRODUCTS, NEEDS_AIRPLANE, DEFAULT_BRIGHTNESS
+  * Add "kudp1b" to PRODUCTS, NEEDS_AIRPLANE, DEFAULT_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 28 Apr 2014 17:39:56 -0600
+
+system76-driver (14.04.3) trusty; urgency=low
+
+  * Fix system76-driver.desktop so System76 Driver shows up in System Settings
+    on Ubuntu 14.04
+
+ -- Jason Gerard DeRose <jason@system76.com>  Sat, 26 Apr 2014 09:24:25 -0600
+
+system76-driver (14.04.2) trusty; urgency=low
+
+  * daru4 is now named "Darter UltraTouch"
+  * setup.py: require Python >= 3.4 as we wont be testing with 3.3 anymore
+  * setup.py: "test" command now runs static analysis with `pyflakes3`, fails
+    if any pyflakes checks fail
+  * debian/control: add `pyflakes` to Build-Depends
+  * Fix several needless imports caught by pyflakes
+  * Add "ratp3" to PRODUCTS
+  * Add "bonx8" to DEFAULT_BRIGHTNESS (still needed)
+  * Drop "lemu1" brightness hotkey fix on "gazp7" (not needed on Ubuntu 14.04)
+  * debian/control: bump Standards-Version to 3.9.5
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 21 Apr 2014 13:09:43 -0600
+
+system76-driver (14.04.1) trusty; urgency=low
+
+  * As Intel 3160/7260 have performance and user-experience issues when power
+    management is on, add `wifi_pm_disable` action for daru4, kudp1
+  * Add "bonx8" to PRODUCTS, NEEDS_AIRPLANE
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 15 Apr 2014 16:16:19 -0600
+
+system76-driver (14.04.0) trusty; urgency=low
+
+  * Start 14.04.0 series, initial Trusty release
+  * debian/control: system76-driver-nvidia now Depends on nvidia-331-updates
+  * system76-nvidia-quirks: change Handler to "nvidia-331-updates"
+  * debian/control: require python3 >= 3.4
+
+ -- Jason Gerard DeRose <jason@system76.com>  Wed, 26 Mar 2014 16:20:32 -0600
+
+system76-driver (13.10.6) saucy; urgency=low
+
+  * Added "sabt2" to PRODUCTS, DEFAULT_BRIGHTNESS
+  * Added "sabc2" to PRODUCTS, DEFAULT_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 21 Jan 2014 15:51:48 -0700
+
+system76-driver (13.10.5) saucy; urgency=low
+
+  * Added "sabt1" to PRODUCTS, DEFAULT_BRIGHTNESS
+
+ -- Jason Gerard DeRose <jason@system76.com>  Mon, 25 Nov 2013 20:08:27 -0700
+
+system76-driver (13.10.4) saucy; urgency=low
+
+  * Enable Radeon GPU power management on panp7 via radeon.dpm=1 boot param
+  * Add "kudp1" to PRODUCTS, NEEDS_AIRPLANE, DEFAULT_BRIGHTNESS
+  * Fix brightness restore for Haswell gen products on Saucy (system76-daemon
+    now starts on "login-session-start" rather than "local-filesystems")
+  * Reduce system76-daemon memory usage via a bit of refactoring in order to
+    avoid importing needless Python modules (26 fewer modules now!)
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 15 Nov 2013 15:04:06 -0700
+
+system76-driver (13.10.3) saucy; urgency=low
+
+  * Fix Color Profile actions for cases when /var/tmp and /var/lib are on
+    different filesystems (eg, /var/tmp on a tmpfs)
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 22 Oct 2013 16:36:30 -0600
+
+system76-driver (13.10.2) saucy; urgency=low
+
+  * Oops, bad side effects from hiding input source indicator
+
+ -- Jason Gerard DeRose <jason@system76.com>  Fri, 18 Oct 2013 16:25:20 -0600
+
+system76-driver (13.10.1) saucy; urgency=low
+
+  * gsettings-override changes:
+    - Don't show input source in the menu bar by default
+    - Two-finger scrolling is on by default in 13.10, no need for override
+
+ -- Jason Gerard DeRose <jason@system76.com>  Tue, 15 Oct 2013 20:57:03 -0600
+
+system76-driver (13.10.0) saucy; urgency=low
+
+  * Start 13.10 series, initial Saucy release
+
+ -- Jason Gerard DeRose <jason@system76.com>  Thu, 10 Oct 2013 21:40:53 -0600

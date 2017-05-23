@@ -1,0 +1,7 @@
+Instructions for temp files while developing support
+
+Any files marked TEMP* are for Kris to make notes or store recopyable code.
+These files are just being used until the System76 references are removed.
+
+When this is done, remove any file starting with TEMP and the .vscode before
+uploading to any repository.
