@@ -22,7 +22,7 @@ This code is used by S76 to determine models.
 Their first model used system-uuid.
 2nd series used baseboard-product-name (written by Sager)
 3rd series uses system-product-name (written by Sager)
-Current gen uses system-version (Sager writes them into AMBIOS for S76?)
+Current gen uses system-version (Sager/Clevo writes them into AMBIOS for S76?)
 
 TODO: figure out how we want to ID our laptops
 
