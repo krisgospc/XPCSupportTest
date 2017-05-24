@@ -1,26 +1,28 @@
 #!/usr/bin/python3
 
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPCSupport: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-This code is designed to make a completely stable xpcsupport release.
+This code is to make a stable OSPCSupport release. This builds the files needed
+to distribute.
 """
 
 import sys
@@ -30,12 +32,12 @@ import re
 import time
 from subprocess import check_call, check_output, call
 
-from xpcsupport import __version__
-from xpcsupport.tests.helpers import TempDir
+from ospcsupport import __version__
+from ospcsupport.tests.helpers import TempDir
 
 
 DISTROS = ('trusty', 'xenial', 'yakkety', 'zesty')
-# Change PPA to XPC PPA when set up
+# Change PPA to OSPC's PPA when set up
 PPA = 'ppa:system76-dev/pre-stable'
 ALPHA = '~alpha'
 
@@ -45,15 +47,15 @@ assert os.getcwd() == TREE
 
 CHANGELOG = path.join(TREE, 'debian', 'changelog')
 SETUP = path.join(TREE, 'setup.py')
-DSC_NAME =     'xpcsupport_{}.dsc'.format(__version__)
-CHANGES_NAME = 'xpcsupport_{}_source.changes'.format(__version__)
+DSC_NAME =     'ospcsupport_{}.dsc'.format(__version__)
+CHANGES_NAME = 'ospcsupport_{}_source.changes'.format(__version__)
 PARENT = path.dirname(TREE)
 DSC = path.join(PARENT, DSC_NAME)
 CHANGES = path.join(PARENT, CHANGES_NAME)
 
 assert path.isfile(CHANGELOG)
 assert path.isfile(SETUP)
-assert path.isfile(path.join(TREE, 'xpcsupport', '__init__.py'))
+assert path.isfile(path.join(TREE, 'ospcsupport', '__init__.py'))
 
 
 def confirm():

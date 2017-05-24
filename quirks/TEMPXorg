@@ -1,5 +1,8 @@
 This folder is where S76 is putting their X.org configs for their
 models with Nvidia cards.
-The file I have changed to xpcsupport is the base file for
+The file I have changed to ospcsupport is the base file for
 Nvidia based computers.
 
+The ospcsupport-nvidia-quirks file is the base for Xorg for nvidia drivers
+System 76 takes that and makes separate quirk files for each model that they have
+with Nvida cards

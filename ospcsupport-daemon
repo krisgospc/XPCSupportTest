@@ -1,26 +1,27 @@
 #!/usr/bin/python3
 
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPC-Support: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-HiDPI daemon to workaround X Server scaling limitations.
+Test Airplane Mode workaround from System76
 """
 
 import time
@@ -32,12 +33,8 @@ import logging
 
 from gi.repository import GLib
 
-
-from gi.repository import GObject
-
-import xpcsupport
-from xpcsupport import hidpidaemon
-from xpcsupport.daemon import load_json_conf
+import ospcsupport
+from ospcsupport import daemon
 
 
 logging.basicConfig(
@@ -54,17 +51,24 @@ parser.add_argument('--debug', action='store_true', default=False,
 )
 args = parser.parse_args()
 
-if os.getuid() == 0:
-    sys.exit('Error: xpcsupport-daemon must be run as user')
+if os.getuid() != 0:
+    sys.exit('Error: ospcsupport must be run as root')
 log.info('**** Process start at monotonic time %r', start_time)
 
-disable = load_json_conf('/etc/xpcsupport-daemon.json').get('disable-hidpi')
-log.info(disable)
-
 if not args.model:
-    args.model = (xpcsupport.get_product_version())
+    model = daemon.load_json_conf('/etc/ospcsupport-daemon.json').get('model')
+    args.model = (model or xpcsupport.get_product_version())
 log.info('model: %r', args.model)
+brightness = daemon.run_brightness(args.model)
+airplane = daemon.run_airplane(args.model)
+acpi = daemon.run_firmware_acpi_interrupt(args.model)
+ess_dac_autoswitch = daemon.run_ess_dac_autoswitch(args.model)
 
-GObject.threads_init()
-if disable != "True":
-    hidpi = hidpidaemon.run_hotplug_autoscaling(args.model)
+mainloop = GLib.MainLoop()
+if args.debug:
+    names = sorted(sys.modules)
+    for name in names:
+        print(name)
+    print(len(names))
+mainloop.run()
+

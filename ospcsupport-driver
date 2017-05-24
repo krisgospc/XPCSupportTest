@@ -1,22 +1,23 @@
 #!/usr/bin/python3
 
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPCSupport: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import argparse
@@ -26,10 +27,10 @@ import time
 import logging
 import platform
 
-import xpcsupport
-from xpcsupport.model import determine_model_new
-from xpcsupport.products import PRODUCTS
-from xpcsupport.gtk import UI
+import ospcsupport
+from ospcsupport.model import determine_model_new
+from ospcsupport.products import PRODUCTS
+from ospcsupport.gtk import UI
 
 
 parser = argparse.ArgumentParser()
@@ -44,7 +45,7 @@ if os.getuid() != 0:
     sys.exit('Error: must be run as root')
 
 logging.basicConfig(
-    filename='/var/log/xpcsupport-driver.log',
+    filename='/var/log/ospcsupport-driver.log',
     level=logging.DEBUG,
     style='{',
     format='{asctime}  {levelname}  {message}',
@@ -58,7 +59,7 @@ if args.model is None:
 product = PRODUCTS.get(args.model)
 
 log.info('** Process start at monotonic time %r', time.monotonic())
-log.info('xpcsupport.__version__: %r', xpcsupport.__version__)
+log.info('ospcsupport.__version__: %r', ospcsupport.__version__)
 log.info('OS: %r', platform.dist())
 log.info('kernel: %r', platform.uname().release)
 log.info('model: %r', args.model)

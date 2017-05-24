@@ -244,9 +244,7 @@ def get_all_dmi_info():
 
 
 def determine_model(info=None):
-    """
-    Determine the System76 model number.
-    """
+    #Determine the OSPC model number.
     if info is None:
         info = get_dmi_info()
     for keyword in KEYWORDS:
@@ -254,7 +252,7 @@ def determine_model(info=None):
         table = TABLES[keyword]
         if value in table:
             return table[value]
-    return 'nonsystem76'
+    return 'nonOSPC'
 
 
 def determine_model_new(sysdir='/sys', info=None):

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=2.7.3
+Encoding=UTF-8
+Name=OSPC Support
+GenericName=OSPC Support
+Comment=Drivers and support for OSPC laptops
+Exec=ospcsupport-driver-pkexec
+Terminal=false
+Type=Application
+Icon=ospcsupport
+Categories=GNOME;GTK;Settings;X-GNOME-SystemSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;
+GenericName[en_US]=OSPC Support
+X-Unity-Settings-Panel=ospcsupport
+X-GNOME-Settings-Panel=ospcsupport

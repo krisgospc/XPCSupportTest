@@ -1,10 +1,10 @@
 Section "Quirk"
-    Identifier "System76 PC"
+    Identifier "Open Source PCs"
     Handler "nvidia-375|nvidia-340"
-    Match "sys_vendor" "System76, Inc.|System76"
+    Match "sys_vendor" "Open Source PCs|OSPC"
     XorgSnippet
         Section "Device"
-            Identifier "System76 nVidia Card"
+            Identifier "OSPC nVidia Card"
             Driver "nvidia"
             Option "NoLogo" "True"
         EndSection

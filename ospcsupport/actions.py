@@ -1,20 +1,21 @@
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPCSupport: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
@@ -42,19 +43,19 @@ CMDLINE_CHECK_DEFAULT_RE = re.compile('^GRUB_CMDLINE_LINUX_DEFAULT')
 CMDLINE_ADD_DEFAULT_RE = re.compile('^GRUB_CMDLINE_LINUX="(.*)"$')
 
 WIFI_PM_DISABLE = """#!/bin/sh
-# Installed by system76-driver
+# Installed by ospcsupport-driver
 # Fixes poor Intel wireless performance when on battery power
 /sbin/iwconfig wlan0 power off
 """
 
 HDMI_HOTPLUG_FIX = """#!/bin/sh
-# Installed by system76-driver
+# Installed by ospcsupport-driver
 # Turn off sound card power savings
 # Fixes HDMI hotplug when on battery power
 echo N > /sys/module/snd_hda_intel/parameters/power_save_controller
 """
 
-DISABLE_PM_ASYNC = """# /etc/tmpfiles.d/system76-disable-pm_async.conf
+DISABLE_PM_ASYNC = """# /etc/tmpfiles.d/ospcsupport-disable-pm_async.conf
 w /sys/power/pm_async - - - - 0
 """
 
@@ -84,7 +85,7 @@ def atomic_write(filename, content, mode=None):
 def backup_filename(filename, date=None):
     if date is None:
         date = datetime.date.today()
-    return '.'.join([filename, 'system76-{}'.format(date)])
+    return '.'.join([filename, 'ospcsupport-{}'.format(date)])
 
 
 def update_grub():
@@ -353,7 +354,7 @@ class hdmi_hotplug_fix(FileAction):
 
 
 class disable_pm_async(FileAction):
-    relpath = ('etc', 'tmpfiles.d', 'system76-disable-pm_async.conf')
+    relpath = ('etc', 'tmpfiles.d', 'ospcsupport-disable-pm_async.conf')
     content = DISABLE_PM_ASYNC
 
     def describe(self):
@@ -457,7 +458,7 @@ class i8042_reset_nomux(GrubAction):
 
 class gfxpayload_text(Action):
     update_grub = True
-    comment = '# Added by system76-driver:'
+    comment = '# Added by ospcsupport-driver:'
     prefix = 'GRUB_GFXPAYLOAD_LINUX='
     value = prefix + 'text'
 
@@ -561,7 +562,7 @@ DAC_PATCH = """[codec]
 0x1b 0x707 0x0004
 """
 
-DAC_MODPROBE = 'options snd-hda-intel patch=system76-audio-patch\n'
+DAC_MODPROBE = 'options snd-hda-intel patch=ospcsupport-audio-patch\n'
 
 
 def read_hda_id(name, device='hwC0D0', rootdir='/'):
@@ -576,8 +577,8 @@ def read_hda_id(name, device='hwC0D0', rootdir='/'):
 
 
 class dac_fixup(Action):
-    relpath1 = ('lib', 'firmware', 'system76-audio-patch')
-    relpath2 = ('etc', 'modprobe.d', 'system76-alsa-base.conf')
+    relpath1 = ('lib', 'firmware', 'ospcsupport-audio-patch')
+    relpath2 = ('etc', 'modprobe.d', 'ospcsupport-alsa-base.conf')
 
     def __init__(self, rootdir='/'):
         self.filename1 = path.join(rootdir, *self.relpath1)
@@ -620,12 +621,12 @@ HEADSET_PATCH = """[codec]
 0x19 0x23A11040
 """
 
-HEADSET_MODPROBE = 'options snd-hda-intel patch=system76-audio-patch\n'
+HEADSET_MODPROBE = 'options snd-hda-intel patch=ospcsupport-audio-patch\n'
 
 
 class headset_fixup(Action):
-    relpath1 = ('lib', 'firmware', 'system76-audio-patch')
-    relpath2 = ('etc', 'modprobe.d', 'system76-alsa-base.conf')
+    relpath1 = ('lib', 'firmware', 'ospcsupport-audio-patch')
+    relpath2 = ('etc', 'modprobe.d', 'ospcsupport-alsa-base.conf')
 
     def __init__(self, rootdir='/'):
         self.filename1 = path.join(rootdir, *self.relpath1)
@@ -688,7 +689,7 @@ VIDEOMODE=
 
 class hidpi_scaling(FileAction):
     relpath = ('usr', 'share', 'glib-2.0', 'schemas',
-        '90_system76-driver-hidpi.gschema.override')
+        '90_ospcsupport-driver-hidpi.gschema.override')
     content = HIDPI_GSETTINGS_OVERRIDE[0] + "DP-0" + HIDPI_GSETTINGS_OVERRIDE[1]
 
     console_setup_content = CONSOLE_SETUP_CONTENT

@@ -1,24 +1,25 @@
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPC-Support: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-Unit test for the `system76driver` package.
+Unit test for the `ospcsupport` package.
 """
 
 from unittest import TestCase
@@ -27,8 +28,8 @@ from os import path
 from subprocess import check_call
 
 from .helpers import TempDir
-from system76driver.products import PRODUCTS
-import system76driver
+from ospcsupport.products import PRODUCTS
+import ospcsupport
 
 
 TREE = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
@@ -37,8 +38,8 @@ IN_TREE = path.isfile(path.join(TREE, 'setup.py'))
 
 class TestConstants(TestCase):
     def test_version(self):
-        self.assertIsInstance(system76driver.__version__, str)
-        (year, month, rev) = system76driver.__version__.split('.')
+        self.assertIsInstance(ospcsupport.__version__, str)
+        (year, month, rev) = ospcsupport.__version__.split('.')
         self.assertEqual(year, str(int(year)))
         self.assertGreaterEqual(int(year), 13)
         self.assertIn(month, ['04', '10'])
@@ -46,9 +47,9 @@ class TestConstants(TestCase):
         self.assertGreaterEqual(int(rev), 0) 
 
     def test_VALID_SYS_VENDOR(self):
-        self.assertIsInstance(system76driver.VALID_SYS_VENDOR, tuple)
-        self.assertIn('System76, Inc.', system76driver.VALID_SYS_VENDOR)
-        for value in system76driver.VALID_SYS_VENDOR:
+        self.assertIsInstance(ospcsupport.VALID_SYS_VENDOR, tuple)
+        self.assertIn('System76, Inc.', ospcsupport.VALID_SYS_VENDOR)
+        for value in ospcsupport.VALID_SYS_VENDOR:
             self.assertIsInstance(value, str)
 
 
@@ -64,29 +65,29 @@ class TestScripts(TestCase):
         # to do a -h as a normal user:
         check_call([script, '-h'])
 
-    def test_system76_driver(self):
+    def test_ospcsupport(self):
         """
-        Test the `system76-driver` Gtk UI script.
+        Test the `ospcsupport` Gtk UI script.
         """
-        self.check_script('system76-driver')
+        self.check_script('ospcsupport')
 
-    def test_system76_driver_cli(self):
+    def test_ospcsupport_driver_cli(self):
         """
-        Test the `system76-driver-cli` CLI script.
+        Test the `ospcsupport-driver-cli` CLI script.
         """
-        self.check_script('system76-driver-cli')
+        self.check_script('ospcsupport-driver-cli')
 
-    def test_system76_daemon(self):
+    def test_ospcsupport_daemon(self):
         """
-        Test the `system76-daemon` CLI script.
+        Test the `ospcsupport-daemon` CLI script.
         """
-        self.check_script('system76-daemon')
+        self.check_script('ospcsupport-daemon')
 
 
 class TestDataFiles(TestCase):
     def iter_data_files(self, callback):
-        for name in sorted(os.listdir(system76driver.datadir)):
-            fullname = path.join(system76driver.datadir, name)
+        for name in sorted(os.listdir(ospcsupport.datadir)):
+            fullname = path.join(ospcsupport.datadir, name)
             self.assertTrue(path.isfile(fullname))
             if callback(name):
                 yield (name, fullname)
@@ -95,7 +96,7 @@ class TestDataFiles(TestCase):
         for (name, fullname) in self.iter_data_files(lambda n: n.endswith('.icc')):
             self.assertTrue(name.endswith('.icc'))
             (prefix, model, *rest) = name.split('-')
-            self.assertEqual(prefix, 'system76')
+            self.assertEqual(prefix, 'OSPC')
             self.assertIn(model, PRODUCTS)
 
 
@@ -103,7 +104,8 @@ class TestFunctions(TestCase):
     def test_read_dmi_id(self):
         tmp = TempDir()
         KEYS = ('sys_vendor', 'product_version')
-        VALS = ('System76, Inc.', 'kudp1')
+        # Need to change this to match OSPC models
+        VALS = ('OSPC', 'kudp1')
 
         # Bad dmi/id key:
         bad_keys = tuple(k.upper() for k in KEYS) + ('product_serial', 'product_name')

@@ -1,24 +1,24 @@
 #!/usr/bin/python3
 
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPCSupport: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 
 import argparse
 import os
@@ -26,21 +26,21 @@ from os import path
 import sys
 import logging
 
-import xpcsupport
-from xpcsupport.products import PRODUCTS
-from xpcsupport.actions import ActionRunner
+import ospcsupport
+from ospcsupport.products import PRODUCTS
+from ospcsupport.actions import ActionRunner
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--strict', action='store_true', default=False,
-    help='Exit with a non-zero status if not a valid XPC product',
+    help='Exit with a non-zero status if not a valid OSPC product',
 )
 parser.add_argument('--model', help='force model rather than detecting it')
 args = parser.parse_args()
 exitcode = (2 if args.strict else 0)
 
-# Because xpcsupport-driver-cli will be called automatically from the postinst
-# script, we don't log to /var/log/xpcsupport-driver.log
+# Because ospcsupport-driver-cli will be called automatically from the postinst
+# script, we don't log to /var/log/ospcsupport-driver.log
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(levelname)s\t%(message)s',
@@ -49,13 +49,13 @@ log = logging.getLogger()
 
 # This is a hack so that the driver doesn't get run in the VM when mastering
 # and maintaining the golden images:
-MARKER = '/var/cache/xpcsupport-pre-master.marker'
+MARKER = '/var/cache/ospcsupport-pre-master.marker'
 if path.exists(MARKER):
     log.warning('Pre-master marker exists: %r', MARKER)
     sys.exit(0)
 
 
-product_version = args.model or xpcsupport.get_product_version()
+product_version = args.model or ospcsupport.get_product_version()
 try:
     product = PRODUCTS[product_version]
     log.info('product_version: %r', product_version)

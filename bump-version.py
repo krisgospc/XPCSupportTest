@@ -1,26 +1,27 @@
 #!/usr/bin/python3
 
-# XPCSupport: Support tool for XPC Computers
-# Copyright (C) 2017 Xotic PC
+# OSPCSupport: Support tool for OSPC Computers
+# Copyright (C) 2017 Open Source PCs
 #
-# This file is part of `xpcsupport`.
+# This file is part of `ospcsupport`, a support tool for Open Source PC
+# products.
 #
-# `xpcsupport` is free software; you can redistribute it and/or modify
+# `ospcsupport` is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 #
-# `xpcsupport` is distributed in the hope that it will be useful,
+# `ospcsupport` is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License along
-# with `xpcsupport`; if not, write to the Free Software Foundation, Inc.,
+# with `ospcsupport`; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 """
-Bump version of xpcsupport to start work on next release.
+This code changes the version to start on the next release of OSPCSupport
 """
 
 import sys
@@ -30,8 +31,8 @@ import re
 import time
 from subprocess import check_call, check_output, call
 
-from xpcsupport import __version__
-from xpcsupport.tests.helpers import TempDir
+from ospcsupport import __version__
+from ospcsupport.tests.helpers import TempDir
 
 
 DISTROS = ('trusty', 'xenial', 'yakkety', 'zesty')
@@ -42,7 +43,7 @@ assert TREE == sys.path[0]
 assert os.getcwd() == TREE
 
 CHANGELOG = path.join(TREE, 'debian', 'changelog')
-INIT = path.join(TREE, 'xpcsupport', '__init__.py')
+INIT = path.join(TREE, 'ospcsupport', '__init__.py')
 SETUP = path.join(TREE, 'setup.py')
 
 assert path.isfile(CHANGELOG)
@@ -69,7 +70,7 @@ def parse_version_line(line):
     if ALPHA in line:
         raise ValueError('{!r} in current version:\n{!r}'.format(ALPHA, line))
     m = re.match(
-        '^xpcsupport \(([\.0-9]+)\) ([a-z]+); urgency=low$', line
+        '^ospcsupport \(([\.0-9]+)\) ([a-z]+); urgency=low$', line
     )
     if m is None:
         raise ValueError('bad version line[0]:\n{!r}'.format(line))
@@ -99,7 +100,7 @@ def build_author_line():
 
 
 def iter_new_changelog_lines(new, newdeb, distro):
-    yield 'xpcsupport ({}) {}; urgency=low\n'.format(newdeb, distro)
+    yield 'ospcsupport ({}) {}; urgency=low\n'.format(newdeb, distro)
     yield '\n'
     yield '  * Daily WIP for {}\n'.format(new)
     yield '\n'
@@ -153,7 +154,7 @@ with open(INIT, 'w') as fp:
 check_call([SETUP, 'test'])
 
 # Make sure package builds okay locally using pbuilder-dist:
-dsc_name = 'xpcsupport_{}.dsc'.format(newdeb)
+dsc_name = 'ospcsupport_{}.dsc'.format(newdeb)
 check_call(['pbuilder-dist', distro, 'update'])
 tmp = TempDir()
 cmd = [
